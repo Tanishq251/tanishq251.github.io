@@ -3,14 +3,14 @@
 #profile {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1rem;
-  margin-bottom: 8rem;
+  padding: 2rem 1rem;
+  margin: 0 auto 8rem auto;
   width: 100%;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  min-height: 80vh;
+  box-sizing: border-box;
   animation: fadeInSlideUp 1s ease-in-out;
 }
 
@@ -33,16 +33,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
   animation: fadeInSlideUp 1.5s ease-in-out;
-  /* Add animation */
 }
 
 .section__pic-container img {
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   height: 400px;
+  max-width: 100%;
   border-radius: 50%;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
 .section__text {
@@ -99,10 +101,10 @@ h1.title {
 
 .btn-container {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
-  /* Allow buttons to wrap if necessary */
 }
 
 .btn {
@@ -117,6 +119,7 @@ h1.title {
 
 #socials-container {
   display: flex;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -148,70 +151,81 @@ h1.title {
 
 @media screen and (max-width: 600px) {
   #profile {
-    margin-top: 5.4rem;
     flex-direction: column;
     align-items: center;
-    animation: none;
-    width: 100%;
-    max-width: 100%;
-    padding: 1rem 0.5rem;
+    justify-content: center;
+    padding: 2rem 1rem;
+    margin: 0 auto 4rem auto;
+    min-height: auto;
+    text-align: center;
   }
 
   .section__pic-container {
     width: 100%;
     margin-bottom: 2rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .section__pic-container img {
-    width: 100%;
-    max-width: 275px;
+    width: 275px;
     height: 275px;
+    max-width: 90vw;
+    margin: 0 auto;
+    display: block;
   }
 
   .section__text {
     width: 100%;
-    padding: 0 1rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .section-text-p1 {
     font-size: 4vw;
-    /* Adjust font size for smaller screens */
+    margin-bottom: 0.5rem;
   }
 
   h1.title {
     font-size: 10vw;
-    /* Adjust font size for smaller screens */
+    margin-bottom: 1rem;
+    text-align: center;
   }
 
   .section_text_p2 {
     font-size: 4.5vw;
-    /* Adjust font size for smaller screens */
+    margin-bottom: 1.5rem;
+    text-align: center;
   }
 
   .btn-container {
     justify-content: center;
-    /* Center the buttons */
-    flex-wrap: nowrap;
-    /* Prevent buttons from wrapping */
-    gap: 1rem;
-    /* Ensure there is a gap between buttons */
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    width: 100%;
   }
 
   .btn {
     flex: none;
-    /* Prevent buttons from stretching */
+    min-width: 120px;
   }
 }
 
 @media screen and (max-width: 400px) {
   #profile {
-    margin-bottom: -1rem;
-    padding: 1rem 0.3rem;
+    padding: 1.5rem 0.5rem;
+    margin-bottom: 2rem;
   }
 
   .section__pic-container img {
-    max-width: 250px;
+    width: 250px;
     height: 250px;
+    max-width: 85vw;
   }
 
   .section-text-p1 {
@@ -225,15 +239,31 @@ h1.title {
   .section_text_p2 {
     font-size: 6vw;
   }
+
+  .btn-container {
+    gap: 0.5rem;
+  }
+
+  .btn {
+    min-width: 100px;
+    padding: 0.4rem 0.8rem;
+  }
 }
 
 @media screen and (max-width: 320px) {
   #profile {
-    padding: 0.8rem 0.2rem;
+    padding: 1rem 0.3rem;
   }
 
   .section__pic-container img {
-    max-width: 220px;
+    width: 220px;
     height: 220px;
+    max-width: 80vw;
+  }
+
+  .btn {
+    min-width: 90px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
   }
 }

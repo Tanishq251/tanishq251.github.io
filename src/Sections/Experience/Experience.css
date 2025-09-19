@@ -1,14 +1,14 @@
 #experience {
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  justify-content: center;
+  padding: 4rem 2rem;
   text-align: center;
   width: 100%;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2rem auto;
+  box-sizing: border-box;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -38,7 +38,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
 }
 
 .ex-about-containers {
@@ -49,15 +51,19 @@
 
 .details-container {
   border: 0.2rem solid black;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 2rem;
+  margin: 0;
   width: 100%;
   max-width: 450px;
+  min-width: 300px;
   border-radius: 8px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
   animation: zoomIn 1s ease-in-out;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .details-container:hover {
@@ -113,18 +119,20 @@
 
 @media (max-width: 768px) {
   #experience {
-    padding: 1.5rem 0.8rem;
+    padding: 3rem 1rem;
   }
 
   .experience-details-container {
     flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
   }
 
   .details-container {
     width: 100%;
     max-width: 600px;
-    margin: 0.8rem;
+    min-width: auto;
+    margin: 0;
   }
 
   .article {
@@ -134,19 +142,18 @@
 
 @media (max-width: 600px) {
   #experience {
-    padding: 1.5rem 0.5rem;
+    padding: 2rem 0.8rem;
   }
 
   .details-container {
     max-width: 100%;
-    margin: 0.5rem;
-    padding: 0.8rem;
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 400px) {
   #experience {
-    padding: 1rem 0.3rem;
+    padding: 2rem 0.5rem;
   }
 
   .experience-sub-title {
@@ -154,8 +161,7 @@
   }
 
   .details-container {
-    margin: 0.3rem;
-    padding: 0.6rem;
+    padding: 1rem;
   }
 
   .ex-about-containers {
@@ -169,10 +175,10 @@
 
 @media (max-width: 320px) {
   #experience {
-    padding: 0.8rem 0.2rem;
+    padding: 1.5rem 0.3rem;
   }
 
   .details-container {
-    padding: 0.5rem;
+    padding: 0.8rem;
   }
 }

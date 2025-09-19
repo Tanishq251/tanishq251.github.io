@@ -46,34 +46,34 @@ const Contacts = () => {
       <p className="section-text-p1">Get in Touch</p>
       <h1 className="title">Contact Me</h1>
       <form className="contact-form" onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="name" 
-          placeholder="Name" 
-          value={formState.name} 
-          onChange={handleChange} 
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formState.name}
+          onChange={handleChange}
           required
         />
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="Email" 
-          value={formState.email} 
-          onChange={handleChange} 
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formState.email}
+          onChange={handleChange}
           required
         />
-        <input 
-          type="text" 
-          name="subject" 
-          placeholder="Subject" 
-          value={formState.subject} 
-          onChange={handleChange} 
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          value={formState.subject}
+          onChange={handleChange}
           required
         />
-        <textarea 
-          name="message" 
-          placeholder="Message" 
-          value={formState.message} 
+        <textarea
+          name="message"
+          placeholder="Message"
+          value={formState.message}
           onChange={handleChange}
           required
         ></textarea>

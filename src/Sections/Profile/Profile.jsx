@@ -1,25 +1,34 @@
 import "./Profile.css";
 import '../../Components/Icons/Icons.css';
 import '../../Components/Button/Button.css';
+import { useScrollAnimationClass } from '../../hooks/useScrollAnimationClass';
 import { useState, useEffect } from 'react';
 
 const Profile = () => {
   const roles = [
     "A Student",
-    "A Researcher", 
+    "A Researcher",
     "Computer Vision Enthusiast",
     "Software Developer",
     "Problem Solver"
   ];
-  
+
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  
+
+  // Animation hooks
+  const [picRef, picClass] = useScrollAnimationClass('fade-in-left', 0.1, 200);
+  const [greetingRef, greetingClass] = useScrollAnimationClass('fade-in-up', 0.1, 100);
+  const [titleRef, titleClass] = useScrollAnimationClass('fade-in-up', 0.1, 200);
+  const [roleRef, roleClass] = useScrollAnimationClass('fade-in-up', 0.1, 300);
+  const [btnRef, btnClass] = useScrollAnimationClass('scale-in', 0.1, 400);
+  const [socialRef, socialClass] = useScrollAnimationClass('bounce-in', 0.1, 500);
+
   useEffect(() => {
     const currentRole = roles[currentRoleIndex];
     const typingSpeed = isDeleting ? 50 : 100;
-    
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         // Typing forward
@@ -40,22 +49,22 @@ const Profile = () => {
         }
       }
     }, typingSpeed);
-    
+
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, currentRoleIndex, roles]);
   return (
     <section id="profile">
-      <div className="section__pic-container">
+      <div ref={picRef} className={`section__pic-container ${picClass}`}>
         <img src="/assets/Tani2.png" alt="Tani" />
       </div>
       <div className="section__text">
-        <p className="section-text-p1">Hello, I am</p>
-        <h1 className="title">TanishQ Rachamalla</h1>
-        <p className="section_text_p2">
+        <p ref={greetingRef} className={`section-text-p1 ${greetingClass}`}>Hello, I am</p>
+        <h1 ref={titleRef} className={`title ${titleClass}`}>TanishQ Rachamalla</h1>
+        <p ref={roleRef} className={`section_text_p2 ${roleClass}`}>
           {displayText}
           <span className="cursor">|</span>
         </p>
-        <div className="btn-container">
+        <div ref={btnRef} className={`btn-container ${btnClass}`}>
           <button
             className="btn btn-color-2"
             onClick={() =>
@@ -73,7 +82,7 @@ const Profile = () => {
             Contact Info
           </button>
         </div>
-        <div id="socials-container">
+        <div ref={socialRef} id="socials-container" className={socialClass}>
           <a href="https://www.linkedin.com/in/tanishq-rachamalla-5a759b234/" target="_blank" rel="noopener noreferrer">
             <img
               src="/assets/linkedin2.png"
@@ -101,7 +110,7 @@ const Profile = () => {
               alt="Codechef Profile"
               className="icon"
             />
-          </a> 
+          </a>
         </div>
       </div>
     </section>

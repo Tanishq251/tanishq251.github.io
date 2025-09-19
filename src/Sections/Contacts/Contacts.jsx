@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Contacts.css';
+import { useScrollAnimationClass } from '../../hooks/useScrollAnimationClass';
 import emailjs from 'emailjs-com';
 
 const Contacts = () => {
@@ -9,6 +10,11 @@ const Contacts = () => {
     subject: '',
     message: ''
   });
+
+  // Animation hooks
+  const [subtitleRef, subtitleClass] = useScrollAnimationClass('fade-in-up', 0.1, 0);
+  const [titleRef, titleClass] = useScrollAnimationClass('fade-in-up', 0.1, 100);
+  const [formRef, formClass] = useScrollAnimationClass('slide-in-up', 0.1, 200);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,9 +49,9 @@ const Contacts = () => {
 
   return (
     <section id="contact">
-      <p className="section-text-p1">Get in Touch</p>
-      <h1 className="title">Contact Me</h1>
-      <form className="contact-form" onSubmit={handleSubmit}>
+      <p ref={subtitleRef} className={`section-text-p1 ${subtitleClass}`}>Get in Touch</p>
+      <h1 ref={titleRef} className={`title ${titleClass}`}>Contact Me</h1>
+      <form ref={formRef} className={`contact-form ${formClass}`} onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"

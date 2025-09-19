@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Projects.css";
+import { useScrollAnimationClass } from '../../hooks/useScrollAnimationClass';
 
 const projects = [
   {
@@ -20,7 +21,7 @@ const projects = [
     description: "Helps to custom and schedule an email",
     details: "The Custom Email Sender is a web application built with React, Node.js, and Express, integrating LLMs for dynamic, personalized email content. It features a scheduling system for precise email delivery, enabling users to create tailored, impactful messages with ease and efficiency.",
     link: "https://github.com/Tanishq251/Custom_Email_Sender",
-    image:"/assets/email.jpg",
+    image: "/assets/email.jpg",
   },
   {
     title: "HSI classification",
@@ -69,16 +70,21 @@ const Projects = () => {
     setFlipped(newFlipped);
   };
 
+  // Animation hooks
+  const [subtitleRef, subtitleClass] = useScrollAnimationClass('fade-in-up', 0.1, 0);
+  const [titleRef, titleClass] = useScrollAnimationClass('fade-in-up', 0.1, 100);
+  const [containerRef, containerClass] = useScrollAnimationClass('slide-in-up', 0.1, 200);
+
   return (
     <section id="projects">
-      <p className="section-text-p1">show case</p>
-      <h1 className="title">Projects</h1>
-      <div className="workflow-card-slider">
+      <p ref={subtitleRef} className={`section-text-p1 ${subtitleClass}`}>show case</p>
+      <h1 ref={titleRef} className={`title ${titleClass}`}>Projects</h1>
+      <div ref={containerRef} className={`workflow-card-slider ${containerClass}`}>
         <div className="workflow-card-track">
           {projects.map((project, index) => (
             <div
-              className={`workflow-card ${flipped[index] ? "flipped" : ""}`}
               key={index}
+              className={`workflow-card ${flipped[index] ? "flipped" : ""}`}
             >
               <div className="workflow-card-inner">
                 <div className="workflow-card-front">

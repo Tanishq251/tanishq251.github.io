@@ -6,6 +6,7 @@ import About from "./Sections/About/About";
 import Projects from "./Sections/Projects/Projects";
 import "./index.css";
 import "./App.css";
+import "./styles/scrollAnimations.css";
 import Contacts from "./Sections/Contacts/Contacts";
 import Footer from "./Components/Footer/Footer";
 

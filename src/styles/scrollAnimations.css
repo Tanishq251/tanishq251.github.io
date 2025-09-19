@@ -1,0 +1,193 @@
+/* Scroll Animation Base Styles */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Different Animation Types */
+
+/* Fade In Up */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade In Left */
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade In Right */
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale In */
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Slide In Up */
+.slide-in-up {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Bounce In */
+.bounce-in {
+    opacity: 0;
+    transform: scale(0.3);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.bounce-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger Animation for Child Elements */
+.stagger-container .stagger-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stagger-container.visible .stagger-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.stagger-container.visible .stagger-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.stagger-container.visible .stagger-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.stagger-container.visible .stagger-item:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.stagger-container.visible .stagger-item:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.stagger-container.visible .stagger-item:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+.stagger-container.visible .stagger-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reveal Animation */
+.reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible::before {
+    transform: translateX(100%);
+}
+
+/* Floating Animation */
+.float-in {
+    opacity: 0;
+    transform: translateY(40px) rotate(2deg);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.float-in.visible {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+
+    .fade-in-up,
+    .slide-in-up {
+        transform: translateY(40px);
+    }
+
+    .fade-in-left {
+        transform: translateX(-40px);
+    }
+
+    .fade-in-right {
+        transform: translateX(40px);
+    }
+
+    .scale-in {
+        transform: scale(0.9);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .scroll-animate,
+    .fade-in-up,
+    .fade-in-left,
+    .fade-in-right,
+    .scale-in,
+    .slide-in-up,
+    .bounce-in,
+    .stagger-item,
+    .float-in {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}

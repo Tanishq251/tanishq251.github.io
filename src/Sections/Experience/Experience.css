@@ -39,7 +39,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: 2rem;
+
   width: 100%;
 }
 
@@ -51,8 +51,8 @@
 
 .details-container {
   border: 0.2rem solid black;
-  padding: 2rem;
-  margin: 0;
+  padding: 1rem;
+  margin: 1rem;
   width: 100%;
   max-width: 450px;
   min-width: 300px;
@@ -80,13 +80,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .article {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   width: 45%;
   animation: slideIn 1s ease-in-out;
 }
@@ -125,7 +125,7 @@
   .experience-details-container {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 
   .details-container {

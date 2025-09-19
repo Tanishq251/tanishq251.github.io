@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import "./Experience.css";
 import "../../Components/Icons/Icons.css";
+import { useScrollAnimationClass } from '../../hooks/useScrollAnimationClass';
 import tickIcon from "/assets/tick2.png"; // Adjust the path accordingly
 import arrowIcon from "/assets/down.jpg"; // Adjust the path accordingly
 
@@ -42,6 +43,15 @@ const Experience = () => {
     { skill: "Colab", level: "Advanced" },
   ];
 
+  // Animation hooks
+  const [subtitleRef, subtitleClass] = useScrollAnimationClass('fade-in-up', 0.1, 0);
+  const [titleRef, titleClass] = useScrollAnimationClass('fade-in-up', 0.1, 100);
+  const [webRef, webClass] = useScrollAnimationClass('fade-in-left', 0.1, 200);
+  const [langRef, langClass] = useScrollAnimationClass('fade-in-right', 0.1, 300);
+  const [techRef, techClass] = useScrollAnimationClass('fade-in-left', 0.1, 400);
+  const [toolsRef, toolsClass] = useScrollAnimationClass('fade-in-right', 0.1, 500);
+  const [arrowRef, arrowClass] = useScrollAnimationClass('bounce-in', 0.1, 600);
+
   const renderSkills = (skills) =>
     skills.map((item, index) => (
       <article key={index}>
@@ -55,17 +65,17 @@ const Experience = () => {
 
   return (
     <section id="experience">
-      <p className="section-text-p1">Explore My</p>
-      <h1 className="title">Experience</h1>
+      <p ref={subtitleRef} className={`section-text-p1 ${subtitleClass}`}>Explore My</p>
+      <h1 ref={titleRef} className={`title ${titleClass}`}>Experience</h1>
       <div className="experience-details-container">
         <div className="ex-about-containers">
-          <div className="details-container">
+          <div ref={webRef} className={`details-container ${webClass}`}>
             <h2 className="experience-sub-title">Web Development</h2>
             <div className="article-container">
               {renderSkills(webDevelopmentSkills)}
             </div>
           </div>
-          <div className="details-container">
+          <div ref={langRef} className={`details-container ${langClass}`}>
             <h2 className="experience-sub-title">Programming Languages</h2>
             <div className="article-container">
               {renderSkills(programmingLanguages)}
@@ -73,13 +83,13 @@ const Experience = () => {
           </div>
         </div>
         <div className="ex-about-containers">
-          <div className="details-container">
+          <div ref={techRef} className={`details-container ${techClass}`}>
             <h2 className="experience-sub-title">Technologies</h2>
             <div className="article-container">
               {renderSkills(technologies)}
             </div>
           </div>
-          <div className="details-container">
+          <div ref={toolsRef} className={`details-container ${toolsClass}`}>
             <h2 className="experience-sub-title">Tools</h2>
             <div className="article-container">
               {renderSkills(tools)}
@@ -88,9 +98,10 @@ const Experience = () => {
         </div>
       </div>
       <img
+        ref={arrowRef}
         src={arrowIcon}
         alt="Arrow icon"
-        className="ex-icon"
+        className={`ex-icon ${arrowClass}`}
         onClick={() => (window.location.href = "./#projects")}
       />
     </section>

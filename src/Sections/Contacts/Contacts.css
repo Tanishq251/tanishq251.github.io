@@ -1,4 +1,5 @@
 #contact {
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
@@ -6,6 +7,7 @@
   background-color: white;
   color: black;
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 .title {
@@ -24,13 +26,14 @@
 
 .contact-form input,
 .contact-form textarea {
-  width: 95%;
+  width: 100%;
   padding: 0.8rem;
   border: 0.1rem solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
   background-color: white;
   color: black;
+  box-sizing: border-box;
 }
 
 .contact-form input:focus,
@@ -89,9 +92,17 @@
 }
 
 /* Mobile Responsiveness */
+@media (max-width: 900px) {
+  #contact {
+    max-width: 550px;
+    padding: 2rem 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   #contact {
-    padding: 1rem;
+    max-width: 100%;
+    padding: 1.5rem 1rem;
   }
 
   .title {
@@ -117,9 +128,15 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   #contact {
-    padding: 0.8rem;
+    padding: 1.5rem 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #contact {
+    padding: 1rem 0.5rem;
   }
 
   .title {
@@ -146,5 +163,22 @@
 
   .contact-info {
     gap: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  #contact {
+    padding: 0.8rem 0.3rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.4rem;
+  }
+
+  .contact-icon {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
   }
 }

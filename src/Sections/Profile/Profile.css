@@ -2,22 +2,29 @@
 
 #profile {
   display: flex;
-  flex-direction: row; /* Side-by-side by default */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   margin-bottom: 8rem;
-  animation: fadeInSlideUp 1s ease-in-out; /* Add animation */
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInSlideUp 1s ease-in-out;
 }
 
 @keyframes fadeInSlideUp {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Slide up effect */
+    transform: translateY(20px);
+    /* Slide up effect */
   }
+
   to {
     opacity: 1;
-    transform: translateY(0); /* End position */
+    transform: translateY(0);
+    /* End position */
   }
 }
 
@@ -26,13 +33,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeInSlideUp 1.5s ease-in-out; /* Add animation */
+  animation: fadeInSlideUp 1.5s ease-in-out;
+  /* Add animation */
 }
 
 .section__pic-container img {
+  width: 100%;
   max-width: 400px;
   height: 400px;
-  border-radius: 50%; /* Optional: makes the image circular */
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .section__text {
@@ -43,40 +53,66 @@
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  animation: fadeInSlideUp 2s ease-in-out; /* Add animation */
+  animation: fadeInSlideUp 2s ease-in-out;
+  /* Add animation */
 }
 
 .section-text-p1 {
-  font-size: 2vw; /* Responsive font size */
+  font-size: 2vw;
+  /* Responsive font size */
   margin-bottom: 0.5rem;
 }
 
 h1.title {
-  font-size: 4vw; 
+  font-size: 4vw;
   margin-bottom: 1.5rem;
-  line-height: 1.2; 
+  line-height: 1.2;
 }
 
 
 .section_text_p2 {
-  font-size: 2.5vw; /* Responsive font size */
+  font-size: 2.5vw;
+  /* Responsive font size */
   margin-bottom: 1rem;
   margin-top: -1.5rem;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: #555;
+  font-weight: bold;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .btn-container {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
-  flex-wrap: wrap; /* Allow buttons to wrap if necessary */
+  flex-wrap: wrap;
+  /* Allow buttons to wrap if necessary */
 }
 
 .btn {
   padding: 0.5rem 1rem;
   cursor: pointer;
-  flex: 1; /* Ensure buttons share available space equally */
+  flex: 1;
+  /* Ensure buttons share available space equally */
   text-align: center;
-  animation: fadeInSlideUp 2.5s ease-in-out; /* Add animation */
+  animation: fadeInSlideUp 2.5s ease-in-out;
+  /* Add animation */
 }
 
 #socials-container {
@@ -84,30 +120,51 @@ h1.title {
   gap: 1rem;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1200px) {
+  #profile {
+    max-width: 1000px;
+    padding: 1rem 2rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #profile {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .section__pic-container img {
+    max-width: 350px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 750px) {
   .section__pic-container img {
     max-width: 300px;
     height: 300px;
-    border-radius: 50%; /* Optional: makes the image circular */
   }
 }
 
 @media screen and (max-width: 600px) {
   #profile {
-   margin-top: 5.4rem;
-    flex-direction: column; /* Stack elements top-down */
+    margin-top: 5.4rem;
+    flex-direction: column;
     align-items: center;
-    animation: none; /* Disable animation for small screens */
+    animation: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem 0.5rem;
   }
 
   .section__pic-container {
-    width: auto;
-    height: 46vw;
+    width: 100%;
     margin-bottom: 2rem;
   }
 
   .section__pic-container img {
-    width: 275px;
+    width: 100%;
+    max-width: 275px;
     height: 275px;
   }
 
@@ -117,42 +174,66 @@ h1.title {
   }
 
   .section-text-p1 {
-    font-size: 4vw; /* Adjust font size for smaller screens */
+    font-size: 4vw;
+    /* Adjust font size for smaller screens */
   }
 
   h1.title {
-    font-size: 10vw; /* Adjust font size for smaller screens */
+    font-size: 10vw;
+    /* Adjust font size for smaller screens */
   }
 
   .section_text_p2 {
-    font-size: 4.5vw; /* Adjust font size for smaller screens */
+    font-size: 4.5vw;
+    /* Adjust font size for smaller screens */
   }
 
   .btn-container {
-    justify-content: center; /* Center the buttons */
-    flex-wrap: nowrap; /* Prevent buttons from wrapping */
-    gap: 1rem; /* Ensure there is a gap between buttons */
+    justify-content: center;
+    /* Center the buttons */
+    flex-wrap: nowrap;
+    /* Prevent buttons from wrapping */
+    gap: 1rem;
+    /* Ensure there is a gap between buttons */
   }
 
   .btn {
-    flex: none; /* Prevent buttons from stretching */
+    flex: none;
+    /* Prevent buttons from stretching */
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
+  #profile {
+    margin-bottom: -1rem;
+    padding: 1rem 0.3rem;
+  }
+
+  .section__pic-container img {
+    max-width: 250px;
+    height: 250px;
+  }
+
   .section-text-p1 {
-    font-size: 5vw; /* Further adjust font size for very small screens */
+    font-size: 5vw;
   }
 
   .title {
-    font-size: 9.5vw; /* Further adjust font size for very small screens */
+    font-size: 9.5vw;
   }
 
   .section_text_p2 {
-    font-size: 6vw; /* Further adjust font size for very small screens */
+    font-size: 6vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #profile {
+    padding: 0.8rem 0.2rem;
   }
 
-  #profile {
-    margin-bottom: -1rem;
+  .section__pic-container img {
+    max-width: 220px;
+    height: 220px;
   }
 }

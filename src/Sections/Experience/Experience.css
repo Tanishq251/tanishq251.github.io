@@ -5,17 +5,24 @@
   align-items: center;
   padding: 2rem;
   text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeInSlideUp {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Slide up effect */
+    transform: translateY(20px);
+    /* Slide up effect */
   }
+
   to {
     opacity: 1;
-    transform: translateY(0); /* End position */
+    transform: translateY(0);
+    /* End position */
   }
 }
 
@@ -45,11 +52,12 @@
   padding: 1rem;
   margin: 1rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   border-radius: 8px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
   animation: zoomIn 1s ease-in-out;
+  box-sizing: border-box;
 }
 
 .details-container:hover {
@@ -77,9 +85,14 @@
   animation: slideIn 1s ease-in-out;
 }
 
-@media(max-width:1200px) {
+@media (max-width: 1200px) {
+  #experience {
+    max-width: 1000px;
+    padding: 2rem 1.5rem;
+  }
+
   .details-container {
-    width: 90%;
+    max-width: 400px;
   }
 
   .article {
@@ -87,7 +100,22 @@
   }
 }
 
+@media (max-width: 900px) {
+  #experience {
+    max-width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .details-container {
+    max-width: 500px;
+  }
+}
+
 @media (max-width: 768px) {
+  #experience {
+    padding: 1.5rem 0.8rem;
+  }
+
   .experience-details-container {
     flex-direction: column;
     align-items: center;
@@ -95,6 +123,8 @@
 
   .details-container {
     width: 100%;
+    max-width: 600px;
+    margin: 0.8rem;
   }
 
   .article {
@@ -102,9 +132,30 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  #experience {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .details-container {
+    max-width: 100%;
+    margin: 0.5rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #experience {
+    padding: 1rem 0.3rem;
+  }
+
   .experience-sub-title {
     font-size: 1.2rem;
+  }
+
+  .details-container {
+    margin: 0.3rem;
+    padding: 0.6rem;
   }
 
   .ex-about-containers {
@@ -113,5 +164,15 @@
 
   .article {
     width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  #experience {
+    padding: 0.8rem 0.2rem;
+  }
+
+  .details-container {
+    padding: 0.5rem;
   }
 }

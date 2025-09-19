@@ -1,17 +1,60 @@
 import "./Profile.css";
 import '../../Components/Icons/Icons.css';
 import '../../Components/Button/Button.css';
+import { useState, useEffect } from 'react';
 
 const Profile = () => {
+  const roles = [
+    "A Student",
+    "A Researcher", 
+    "Computer Vision Enthusiast",
+    "Software Developer",
+    "Problem Solver"
+  ];
+  
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing forward
+        if (displayText.length < currentRole.length) {
+          setDisplayText(currentRole.substring(0, displayText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting
+        if (displayText.length > 0) {
+          setDisplayText(currentRole.substring(0, displayText.length - 1));
+        } else {
+          // Finished deleting, move to next role
+          setIsDeleting(false);
+          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, typingSpeed);
+    
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentRoleIndex, roles]);
   return (
     <section id="profile">
       <div className="section__pic-container">
-        <img src="/assets/tani6.png" alt="Tani" />
+        <img src="/assets/Tani2.png" alt="Tani" />
       </div>
       <div className="section__text">
         <p className="section-text-p1">Hello, I am</p>
         <h1 className="title">TanishQ Rachamalla</h1>
-        <p className="section_text_p2">A Student</p>
+        <p className="section_text_p2">
+          {displayText}
+          <span className="cursor">|</span>
+        </p>
         <div className="btn-container">
           <button
             className="btn btn-color-2"
@@ -52,13 +95,13 @@ const Profile = () => {
               className="icon"
             />
           </a>
-          {/* <a href="https://www.codechef.com/users/tanishq_16503" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.codechef.com/users/tanishq_16503" target="_blank" rel="noopener noreferrer">
             <img
               src="../../../public/assets/Codechef.png"
               alt="Codechef Profile"
               className="icon"
             />
-          </a> */}
+          </a> 
         </div>
       </div>
     </section>

@@ -106,7 +106,7 @@ const Profile = () => {
           </a>
           <a href="https://www.codechef.com/users/tanishq_16503" target="_blank" rel="noopener noreferrer">
             <img
-              src="../../../public/assets/Codechef.png"
+              src="/assets/Codechef.png"
               alt="Codechef Profile"
               className="icon"
             />

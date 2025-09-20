@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React from "react";
 import "./Projects.css";
 import { useScrollAnimationClass } from '../../hooks/useScrollAnimationClass';
+import AnimatedProjects from '../../Components/AnimatedProjects/AnimatedProjects';
 
 const projects = [
   {
@@ -62,14 +63,6 @@ const projects = [
 ];
 
 const Projects = () => {
-  const [flipped, setFlipped] = useState(Array(projects.length).fill(false));
-
-  const handleFlip = (index) => {
-    const newFlipped = [...flipped];
-    newFlipped[index] = !newFlipped[index];
-    setFlipped(newFlipped);
-  };
-
   // Animation hooks
   const [subtitleRef, subtitleClass] = useScrollAnimationClass('fade-in-up', 0.1, 0);
   const [titleRef, titleClass] = useScrollAnimationClass('fade-in-up', 0.1, 100);
@@ -79,59 +72,8 @@ const Projects = () => {
     <section id="projects">
       <p ref={subtitleRef} className={`section-text-p1 ${subtitleClass}`}>show case</p>
       <h1 ref={titleRef} className={`title ${titleClass}`}>Projects</h1>
-      <div ref={containerRef} className={`workflow-card-slider ${containerClass}`}>
-        <div className="workflow-card-track">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`workflow-card ${flipped[index] ? "flipped" : ""}`}
-            >
-              <div className="workflow-card-inner">
-                <div className="workflow-card-front">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="workflow-card-image"
-                  />
-                  <div className="workflow-card-content">
-                    <h3 className="workflow-card-title">{project.title}</h3>
-                    <p className="workflow-card-description">
-                      {project.description}
-                    </p>
-                    <button
-                      onClick={() => handleFlip(index)}
-                      className="workflow-card-link"
-                    >
-                      Learn more
-                    </button>
-                  </div>
-                </div>
-                <div className="workflow-card-back">
-                  <div className="workflow-card-content">
-                    <h3 className="workflow-card-title">{project.title}</h3>
-                    <p className="workflow-card-details">{project.details}</p>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="github-link"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                    <button
-                      onClick={() => handleFlip(index)}
-                      className="workflow-card-link"
-                    >
-                      Back
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div ref={containerRef} className={containerClass}>
+        <AnimatedProjects projects={projects} />
       </div>
     </section>
   );

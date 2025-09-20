@@ -1,157 +1,348 @@
+/* Desktop Layout */
 .workflow-card-slider {
-    overflow-x: auto;
-    /* white-space: nowrap; */
-    width: 78%;
-    padding: 16px;
-    /* display: flex; */
-    margin-left: 8rem;
-    justify-content: center;
-  }
-  
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .workflow-card-slider::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
+  overflow-x: auto;
+  width: 78%;
+  padding: 16px;
+  margin-left: 8rem;
+  justify-content: center;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.workflow-card-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.workflow-card-slider {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.workflow-card-track {
+  display: inline-flex;
+  transition: transform 0.4s ease-in-out;
+  gap: 20px;
+}
+
+.workflow-card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 16px;
+  display: inline-block;
+  transition: transform 0.6s;
+  flex-shrink: 0;
+}
+
+.workflow-card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flipped .workflow-card-inner {
+  transform: rotateY(180deg);
+}
+
+.workflow-card-front,
+.workflow-card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.4s ease-in-out;
+}
+
+.workflow-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.workflow-card-front {
+  background-color: white;
+}
+
+.workflow-card-back {
+  background-color: white;
+  transform: rotateY(180deg);
+}
+
+.workflow-card-image {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+
+}
+
+.workflow-card-content {
+  padding: 16px;
+}
+
+.workflow-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+
+.workflow-card-description,
+.workflow-card-details {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.workflow-card-link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* GitHub Link and Back Button Styling */
+.github-link,
+.workflow-card-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 2rem;
+  transition: background-color 0.3s;
+}
+
+.github-link:hover,
+.workflow-card-link:hover {
+  background-color: white;
+  text-decoration: none;
+}
+
+/* Ensure GitHub Link and Back Button are side by side */
+.workflow-card-back .workflow-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.workflow-card-back .workflow-card-content .github-link {
+  margin-right: 8px;
+}
+
+/* Tablet and Mobile Horizontal Scroll Deck */
+@media screen and (max-width: 1024px) {
   .workflow-card-slider {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .workflow-card-track {
-    display: inline-flex;
-    transition: transform 0.4s ease-in-out;
-  }
-  
-  .workflow-card {
-    width: 300px;
-    height: 400px;
-    perspective: 1000px;
-    margin: 16px;
-    display: inline-block;
-    transition: transform 0.6s;
-  }
-  
-  .workflow-card-inner {
     width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
+    margin-left: 0;
+    padding: 20px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .workflow-card-track {
+    display: flex;
+    gap: 15px;
+    padding: 0 20px;
+    width: max-content;
+  }
+
+  .workflow-card {
+    width: 280px;
+    height: 380px;
+    margin: 0;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Deck effect - cards get smaller as they go back */
+  .workflow-card:not(:first-child) {
+    transform: scale(0.95) translateX(-10px);
+    opacity: 0.8;
+  }
+
+  .workflow-card:not(:first-child):not(:nth-child(2)) {
+    transform: scale(0.9) translateX(-20px);
+    opacity: 0.6;
+  }
+
+  .workflow-card:hover {
+    transform: scale(1.02);
+    z-index: 10;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .workflow-card-slider {
+    padding: 15px 0;
+  }
+
+  .workflow-card-track {
+    gap: 12px;
+    padding: 0 15px;
+  }
+
+  .workflow-card {
+    width: 260px;
+    height: 360px;
+  }
+
+  /* Enhanced deck effect for mobile */
+  .workflow-card:not(:first-child) {
+    transform: scale(0.92) translateX(-15px);
+    opacity: 0.7;
+  }
+
+  .workflow-card:not(:first-child):not(:nth-child(2)) {
+    transform: scale(0.85) translateX(-25px);
+    opacity: 0.5;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .workflow-card {
+    width: 240px;
+    height: 340px;
+  }
+
+  .workflow-card-track {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  /* More pronounced deck effect for small screens */
+  .workflow-card:not(:first-child) {
+    transform: scale(0.9) translateX(-20px);
+    opacity: 0.6;
+  }
+
+  .workflow-card:not(:first-child):not(:nth-child(2)) {
+    transform: scale(0.8) translateX(-30px);
+    opacity: 0.4;
+  }
+}
+
+/ * Enhanced slider container */ .workflow-card-slider-inner {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.workflow-card-slider-inner::-webkit-scrollbar {
+  display: none;
+}
+
+/* Active card highlighting */
+.workflow-card.active {
+  transform: scale(1.05) !important;
+  opacity: 1 !important;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation dots */
+.card-navigation {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background-color: #333;
+  transform: scale(1.2);
+}
+
+.nav-dot:hover {
+  background-color: #666;
+}
+
+/* Show navigation on mobile */
+@media screen and (max-width: 1024px) {
+  .card-navigation {
+    display: flex;
+  }
+
+  .workflow-card-slider {
     position: relative;
   }
-  
-  .flipped .workflow-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .workflow-card-front,
-  .workflow-card-back {
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: box-shadow 0.4s ease-in-out;
-  }
-  
-  .workflow-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .workflow-card-front {
-    background-color: white;
-  }
-  
-  .workflow-card-back {
-    background-color: white;
-    transform: rotateY(180deg);
-  }
-  
-  .workflow-card-image {
-    width: 100%;
-    height: 250px;
-    object-fit:contain;
 
-  }
-  
-  .workflow-card-content {
-    padding: 16px;
-  }
-  
-  .workflow-card-title {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-  }
-
-  
-  .workflow-card-description,
-  .workflow-card-details {
-    font-size: 1rem;
-    margin-bottom: 16px;
-  }
-  
-  .workflow-card-link {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-    background: none;
-    border: none;
+  .workflow-card-slider-inner {
+    width: 100%;
     padding: 0;
   }
-  
-  /* GitHub Link and Back Button Styling */
-  .github-link,
-  .workflow-card-link {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 8px 16px;
-    font-size: 1rem;
-    background-color: white;
-    color: black;
-    border: none;
+
+  /* Smooth deck stacking effect */
+  .workflow-card {
     cursor: pointer;
-    text-decoration: none;
-    border-radius: 2rem;
-    transition: background-color 0.3s;
-  }
-  
-  .github-link:hover,
-  .workflow-card-link:hover {
-    background-color:white ;
-    text-decoration: none;
-  }
-  
-  /* Ensure GitHub Link and Back Button are side by side */
-  .workflow-card-back .workflow-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .workflow-card-back .workflow-card-content .github-link {
-    margin-right: 8px;
+    position: relative;
   }
 
-  @media screen and (max-width: 850px){
-    .workflow-card-slider {
-      overflow-x: auto;
-      /* white-space: nowrap; */
-      width: 90%;
-      padding: 16px;
-      /* display: flex; */
-      margin-left: 0.2rem;
-      justify-content: center;
-    }
+  .workflow-card:not(.active) {
+    filter: brightness(0.8);
   }
+
+  .workflow-card.active {
+    filter: brightness(1);
+  }
+}
+
+/* Enhanced mobile experience */
+@media screen and (max-width: 768px) {
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .card-navigation {
+    gap: 10px;
+    margin-top: 25px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .workflow-card:hover {
+    transform: none;
+  }
+
+  .workflow-card.active {
+    transform: scale(1.02);
+  }
+}
